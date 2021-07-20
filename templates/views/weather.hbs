@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {{>headerLinks}}
+</head>
+
+<body>
+  {{>navbar}}
+  
+  <div class="container-fluid main_header">
+    <div class="row">
+      <div class="col-md-6 col-12 mx-auto align-items-center">
+        <div class="main_content">
+            <form class="temp_form">
+                <input type="text" id="cityName" placeholder="Enter your city name" autocomplete="off"/>
+                <input type="submit" value="Search" id="submitBtn"/>
+            </form>
+        </div>
+        <div class="tempInfo">
+            <div class="top_layer">
+                <p id="day">Tuesday</p>
+                <p id="today_date">13 Oct</p>
+            </div>
+            <div class="main_layer">
+                <p id="city_name">Get city</p>
+                <div class="middle_layer data_hide">
+                    <p id="temp"><span>0</span>°F</p>
+                    <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+{{>footer}}
+</html>
+<script src="js/main.js"></script>
+<script>
+    let curDate = document.getElementById("today_date");
+    let curDay = document.getElementById("day");
+
+    const getCurrentDay = () => {
+        var weekDay =new Array(7);
+        weekDay[0] = "Sunday"; 
+        weekDay[1] = "Monday"; 
+        weekDay[2] = "Tuesday"; 
+        weekDay[3] = "Wednesday"; 
+        weekDay[4] = "Thursday";
+        weekDay[5] = "Friday";
+        weekDay[6] = "Saturday";
+        
+        let currTime = new Date();
+        return (weekDay[currTime.getDay()]);
+    }
+
+    const getCurrentDate = () =>{
+        var months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+
+        var now =new Date();
+        var month = months[now.getMonth()+1];
+        var day = now.getDate();
+       
+        return day + " " + month;
+    }
+    curDay.innerHTML = getCurrentDay();
+    curDate.innerHTML = getCurrentDate();
+</script>
